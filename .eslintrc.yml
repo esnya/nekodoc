@@ -4,6 +4,7 @@ plugins:
 parserOptions:
     ecmaVersion: 7
 env:
+    jest: true
     node: true
 rules:
     node/no-missing-import: 2
