@@ -1,0 +1,13 @@
+doctype html
+html
+    head
+        title= `${path} - Nekodoc`
+        link(rel="stylesheet", href="https://cdn.rawgit.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css")
+    body
+        header
+            h1
+                span= path
+                span -
+                span
+                    a(href="/") Nekodoc
+        div.markdown-body!= data

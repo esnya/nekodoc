@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        title= `${path || '/'} - Nekodoc`
+    body
+        header
+            h1= path || '/'
+        nav
+            ul
+                if path
+                    li
+                        a(href='..') ..
+                each entry in entries
+                    li
+                        a(href=(path ? '/' + path + '/' : '') + entry.path)= entry.path

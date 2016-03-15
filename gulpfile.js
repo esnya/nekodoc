@@ -15,13 +15,17 @@ gulp.task('test', ['lint', 'jest']);
 gulp.task('lint', ['eslint']);
 
 gulp.task('watch', () => {
-    gulp.watch(['src/**/*.js', '!src/**/__tests__/**/*.js'], ['babel']);
-    gulp.watch(['src/**/*.js'], ['jest']);
-    gulp.watch(['src/**/*.js', 'gulpfile.js', '.eslintrc.yml'], ['eslint']);
+    gulp.watch([
+        'src/**/*.js',
+        '!src/**/__tests__/**/*.js',
+        '!src/**/__mocks__/**/*.js',
+    ], ['babel']);
+    gulp.watch(['src/**/*.js', 'package.json'], ['jest']);
+    gulp.watch(['src/**/*.js', 'bin/**/*.js', 'gulpfile.js', '.eslintrc.yml'], ['eslint']);
 });
 
 gulp.task('babel', () =>
-    gulp.src(['src/**/*.js', '!src/**/__tests__/**/*.js'])
+    gulp.src(['src/**/*.js', '!src/**/__tests__/**/*.js', '!src/**/__mocks__/**/*.js'])
         .pipe(plumber({onError: notify.onError({
             title: 'Build Error',
             message: '<%= error %>',
@@ -31,7 +35,7 @@ gulp.task('babel', () =>
 );
 
 gulp.task('eslint', () =>
-    gulp.src(['src/**/*.js', 'gulpfile.js'])
+    gulp.src(['src/**/*.js', 'bin/**/*.js', 'gulpfile.js'])
         .pipe(plumber({onError: notify.onError({
             title: 'Lint Error',
             message: '<%= error %>',
