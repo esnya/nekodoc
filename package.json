@@ -4,11 +4,17 @@
   "description": "Markdown viewer with LiveReload.",
   "main": "lib/index.js",
   "bin": "bin/nekodoc.js",
+  "files": [
+    "bin",
+    "lib",
+    "src",
+    "views"
+  ],
   "scripts": {
     "build": "gulp build",
     "test": "gulp test",
     "watch": "gulp build test watch",
-    "postinstall": "babel src --out-dir lib",
+    "prepublish": "babel src --out-dir lib",
     "version": "update-changelog && git add CHANGELOG.md"
   },
   "repository": {
